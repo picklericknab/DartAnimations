@@ -1,0 +1,45 @@
+import 'package:flutter/material.dart';
+
+void main() => runApp(MyApp());
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(home: ImplicitExample());
+  }
+}
+
+class ImplicitExample extends StatefulWidget {
+  @override
+  _ImplicitExampleState createState() => _ImplicitExampleState();
+}
+
+class _ImplicitExampleState extends State<ImplicitExample> {
+  double _size = 100;
+  Color _color = Colors.blue;
+
+  void _animate() {
+    setState(() {
+      _size = _size == 100 ? 200 : 100;
+      _color = _color == Colors.blue ? Colors.red : Colors.blue;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("Implicit Animation")),
+      body: Center(
+        child: GestureDetector(
+          onTap: _animate,
+          child: AnimatedContainer(
+            duration: Duration(seconds: 1),
+            width: _size,
+            height: _size,
+            color: _color,
+          ),
+        ),
+      ),
+    );
+  }
+}
