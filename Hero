@@ -1,0 +1,35 @@
+class HeroFirstPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("Hero Page 1")),
+      body: Center(
+        child: GestureDetector(
+          onTap: () {
+            Navigator.push(context,
+              MaterialPageRoute(builder: (_) => HeroSecondPage()));
+          },
+          child: Hero(
+            tag: "heroImage",
+            child: FlutterLogo(size: 100),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class HeroSecondPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("Hero Page 2")),
+      body: Center(
+        child: Hero(
+          tag: "heroImage",
+          child: FlutterLogo(size: 200),
+        ),
+      ),
+    );
+  }
+}
